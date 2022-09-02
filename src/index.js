@@ -60,11 +60,10 @@ const main = (()=>{
     document.body.appendChild(wrapper);
 })();
 
-
+//side panel wrapper 
 const sidePanel = (()=>{
     const wrapper = document.createElement('div');
     wrapper.setAttribute('id','sidePanel');
-    wrapper.textContent = "Projects";
 
     const projects = document.createElement('ul');
     wrapper.appendChild(projects);
@@ -73,5 +72,32 @@ const sidePanel = (()=>{
     main.appendChild(wrapper);
 })();
 
+//editor wrapper
+const editor = (()=>{
+    const wrapper = document.createElement('div');
+    wrapper.setAttribute('id','editor');
+    wrapper.textContent = "test";
+    
+    const main = document.getElementById('main');
+    main.appendChild(wrapper);
+})();
+
+//function to append elements to side panel 
+function SPAppend(ElementFunction) {
+    const sidePanel = document.getElementById('sidePanel');
+    sidePanel.appendChild(ElementFunction);
+};
+
+//append things to side panel 
+SPAppend(SPTitle());
+
+//title for side panel 
+function SPTitle(){
+    const projects = document.createElement('h2');
+    projects.setAttribute('id', 'PTitle');
+    projects.textContent = "Projects";
+    
+    return projects;
+};
 
 
