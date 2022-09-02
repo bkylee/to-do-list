@@ -7,15 +7,18 @@ const header = (()=>{
     const wrapper = document.createElement('div');
     document.body.appendChild(wrapper);
     wrapper.setAttribute('id', 'header');
-
-
-
-
-    wrapper.appendChild(searchBar());
-    wrapper.appendChild(profile());
-    wrapper.appendChild(settings());
 })();
 
+
+//function to append element functions to header wrapper element
+function appendHeader(ElementFunction) {
+    const wrapper = document.getElementById('header');
+    wrapper.appendChild(ElementFunction);
+};
+
+appendHeader(searchBar());
+appendHeader(profile());
+appendHeader(settings());
 
 //function that returns the search bar; 
 function searchBar() {
@@ -32,6 +35,7 @@ function searchBar() {
     return searchLabel; 
 };
 
+//profile icon
 function profile() {
     const pic = new Image();
     pic.src = cap; 
@@ -41,9 +45,33 @@ function profile() {
     return pic;
 };
 
+//settings gear icon 
 function settings() { 
     const settings = document.createElement('div');
     settings.textContent = '⚙️';
 
     return settings; 
-}
+};
+
+//stuff below header wrapper
+const main = (()=>{
+    const wrapper = document.createElement('div');
+    wrapper.setAttribute('id','main');
+    document.body.appendChild(wrapper);
+})();
+
+
+const sidePanel = (()=>{
+    const wrapper = document.createElement('div');
+    wrapper.setAttribute('id','sidePanel');
+    wrapper.textContent = "Projects";
+
+    const projects = document.createElement('ul');
+    wrapper.appendChild(projects);
+
+    const main = document.getElementById('main');
+    main.appendChild(wrapper);
+})();
+
+
+

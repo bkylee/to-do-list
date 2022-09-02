@@ -1,0 +1,7 @@
+#sidePanel{
+    display: inline-block;
+}
+
+#main{
+    display: grid;
+}
