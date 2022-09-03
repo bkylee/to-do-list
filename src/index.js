@@ -65,9 +65,6 @@ const sidePanel = (()=>{
     const wrapper = document.createElement('div');
     wrapper.setAttribute('id','sidePanel');
 
-    const projects = document.createElement('ul');
-    wrapper.appendChild(projects);
-
     const main = document.getElementById('main');
     main.appendChild(wrapper);
 })();
@@ -90,6 +87,8 @@ function SPAppend(ElementFunction) {
 
 //append things to side panel 
 SPAppend(SPTitle());
+SPAppend(projectList());
+SPAppend(addButton());
 
 //title for side panel 
 function SPTitle(){
@@ -100,4 +99,18 @@ function SPTitle(){
     return projects;
 };
 
+function projectList() {
+    const projects = document.createElement('ul');
+    projects.setAttribute('class','projectList');
+    
+    return projects;
+};
 
+function addButton () {
+    const but = document.createElement('button');
+    but.setAttribute('type','button');
+    but.setAttribute('id','addition');
+    but.textContent = "+"
+    
+    return but;
+};
