@@ -89,7 +89,6 @@ function SPAppend(ElementFunction) {
 //append things to side panel 
 SPAppend(SPTitle());
 SPAppend(addButton());
-SPAppend(projectList());
 
 //title for side panel 
 function SPTitle(){
@@ -106,7 +105,7 @@ function addButton () {
     but.setAttribute('id','addition');
     but.textContent = "+"
     but.addEventListener('click',()=>{
-        body.appendChild(addScreen());
+        document.body.appendChild(addScreen());
     });
     return but;
 };

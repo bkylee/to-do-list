@@ -6,13 +6,12 @@ export {
 const projectList = ()=>{
     //the array of projects
     const list = [];
-    this.project = project;
     //function to add project to array;
-    this.add = (project) =>{
-        list.push(project);
+    const add = (project) =>{
+        list.push(project);  
     };
 
-    this.remove = (project) =>{
+    const remove = (project) =>{
         index = list.findIndex(project);
         list.splice(index,1);
     };
