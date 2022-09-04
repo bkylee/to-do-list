@@ -100,13 +100,6 @@ function SPTitle(){
     return projects;
 };
 
-function projectList() {
-    const projects = document.createElement('ul');
-    projects.setAttribute('class','projectList');
-    
-    return projects;
-};
-
 function addButton () {
     const but = document.createElement('button');
     but.setAttribute('type','button');
