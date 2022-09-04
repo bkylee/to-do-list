@@ -2,6 +2,7 @@
 
 import './style.css';
 import cap from './cap.png';
+import {addScreen} from './script.js';
 
 const header = (()=>{
     const wrapper = document.createElement('div');
@@ -87,8 +88,8 @@ function SPAppend(ElementFunction) {
 
 //append things to side panel 
 SPAppend(SPTitle());
-SPAppend(projectList());
 SPAppend(addButton());
+SPAppend(projectList());
 
 //title for side panel 
 function SPTitle(){
@@ -111,6 +112,9 @@ function addButton () {
     but.setAttribute('type','button');
     but.setAttribute('id','addition');
     but.textContent = "+"
+    but.addEventListener('click',()=>{
+
+    });
     
     return but;
 };
