@@ -149,7 +149,7 @@ function addScreen () {
     const list = projectList();
 
     submit.addEventListener('click',()=>{
-        const newItem = new Projects(name.value, descInput.value);
+        const newItem = new Projects(nameInput.value, descInput.value);
         list.add(newItem);
         document.body.removeChild(document.body.lastChild);
     });

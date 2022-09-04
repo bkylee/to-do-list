@@ -33,19 +33,19 @@ class Projects {
         if (value.length < 3){
             alert("Name must be at least 3 characters");
         return};
-        this.name = value;
+        this._name = value;
     };
     set description(value){
         if (value.length < 3){
             alert('Description must be at least 3 characters');
         return};
-        this.description = value;
+        this._description = value;
     };
     get name(){
-        return this.name;
+        return this._name;
     };
     get description(){
-        return this.description;
+        return this._description;
     };
     addToDo(todo){
         this.toDoList.push(todo);
@@ -54,10 +54,6 @@ class Projects {
     removeToDo(todo){
         const index = this.toDoList.findIndex(todo);
         this.toDoList.splice(index, 1);
-        return this.toDoList;
-    };
-
-    get toDoList(){
         return this.toDoList;
     };
 };
