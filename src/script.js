@@ -1,75 +1,34 @@
-export {
-    addScreen
+export {}
+    projectList,
+    Projects
 };
 
-//scripts for elements 
-
-function addScreen () {
-    const wrapper = document.createElement('div');
-    wrapper.textContent = "New Project";
-    
-    //the form to create the new project
-    const name = document.createElement('label');
-    name.textContent = "Name";
-    name.setAttribute('id','Pname');
-    wrapper.appendChild(name);
-
-    const nameInput = document.createElement('input');
-    nameInput.setAttribute('id','Pname');
-    nameInput.setAttribute('type','text');
-    name.appendChild(nameInput);
-
-    const description = document.createElement('label');
-    description.textContent = "Description";
-    description.setAttribute('id','Pdesc');
-    wrapper.appendChild(description);
-
-    const descInput = document.createElement('input');
-    descInput.setAttribute('id','Pdesc');
-    descInput.setAttribute('type','text');
-    description.appendChild(descInput);
-
-
-    const submit = document.createElement('button');
-    submit.setAttribute('type','button');
-    submit.textContent = "Submit";
-    wrapper.appendChild(submit);
-
-    submit.addEventListener('click',()=>{
-        const project = new Projects(name.value, descInput.value);
-
-    });
-
-
-    return wrapper;
-};
-
-const projectList = (project)=>{
+const projectList = ()=>{
     //the array of projects
     const list = [];
-    
+    this.project = project;
     //function to add project to array;
-    const add = (project) =>{
-    list.push(project);
+    this.add = (project) =>{
+        list.push(project);
     };
 
-    const remove = (project) =>{
+    this.remove = (project) =>{
         index = list.findIndex(project);
         list.splice(index,1);
     };
-
     return{
         list,
         add, 
         remove
     };
-}
+};
 
 
 class Projects {
     constructor(name, description){
     this.name = name;
     this.description =description;
+    this.toDoList = [];
 }
     set name(value) {
         if (value.length < 3){
@@ -88,5 +47,18 @@ class Projects {
     };
     get description(){
         return this.description;
+    };
+    addToDo(todo){
+        this.toDoList.push(todo);
+        return this.toDoList;
+    };
+    removeToDo(todo){
+        const index = this.toDoList.findIndex(todo);
+        this.toDoList.splice(index, 1);
+        return this.toDoList;
+    };
+
+    get toDoList(){
+        return this.toDoList;
     };
 };

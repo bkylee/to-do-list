@@ -2,7 +2,7 @@
 
 import './style.css';
 import cap from './cap.png';
-import {addScreen} from './script.js';
+import {projectList,Projects} from './script.js';
 
 const header = (()=>{
     const wrapper = document.createElement('div');
@@ -113,8 +113,55 @@ function addButton () {
     but.setAttribute('id','addition');
     but.textContent = "+"
     but.addEventListener('click',()=>{
-
+        body.appendChild(addScreen());
     });
-    
     return but;
+};
+
+
+function addScreen () {
+    const wrapper = document.createElement('div');
+    wrapper.textContent = "New Project";
+    
+    //the form to create the new project
+
+    //name of new project
+    const name = document.createElement('label');
+    name.textContent = "Name";
+    name.setAttribute('id','Pname');
+    wrapper.appendChild(name);
+
+    const nameInput = document.createElement('input');
+    nameInput.setAttribute('id','Pname');
+    nameInput.setAttribute('type','text');
+    name.appendChild(nameInput);
+
+
+    //description of new project
+    const description = document.createElement('label');
+    description.textContent = "Description";
+    description.setAttribute('id','Pdesc');
+    wrapper.appendChild(description);
+
+    const descInput = document.createElement('input');
+    descInput.setAttribute('id','Pdesc');
+    descInput.setAttribute('type','text');
+    description.appendChild(descInput);
+
+    //submit button and event listener 
+    const submit = document.createElement('button');
+    submit.setAttribute('type','button');
+    submit.textContent = "Submit";
+    wrapper.appendChild(submit);
+
+    const list = projectList();
+
+    submit.addEventListener('click',()=>{
+        const newItem = new Projects(name.value, descInput.value);
+        list.add(newItem);
+        document.body.removeChild(document.body.lastChild);
+    });
+
+
+    return wrapper;
 };
