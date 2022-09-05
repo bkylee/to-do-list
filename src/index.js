@@ -70,7 +70,7 @@ const sidePanel = (()=>{
     main.appendChild(wrapper);
 })();
 
-//editor wrapper
+//editor of todo stuff page 
 const editor = (()=>{
     const wrapper = document.createElement('div');
     wrapper.setAttribute('id','editor');
@@ -114,8 +114,6 @@ function addButton () {
 
 function addScreen () {
     const wrapper = document.createElement('div');
-    wrapper.textContent = "New Project";
-    
     //the form to create the new project
 
     //name of new project
@@ -136,9 +134,8 @@ function addScreen () {
     description.setAttribute('id','Pdesc');
     wrapper.appendChild(description);
 
-    const descInput = document.createElement('input');
+    const descInput = document.createElement('textarea');
     descInput.setAttribute('id','Pdesc');
-    descInput.setAttribute('type','text');
     description.appendChild(descInput);
 
     //submit button and event listener 
@@ -147,15 +144,37 @@ function addScreen () {
     submit.textContent = "Submit";
     wrapper.appendChild(submit);
 
+    // list of projects in array
     const list = projectList();
 
+    //submit button 
     submit.addEventListener('click',()=>{
         const newItem = new Projects(nameInput.value, descInput.value);
         list.add(newItem);
-        document.body.removeChild(document.body.lastChild);
-        projectElement(list);
+        projectElement(list.list);
+        wrapper.remove(submit);
     });
 
+    //reset button and event listener
+    const reset = document.createElement('button');
+    reset.setAttribute('type','button');
+    reset.textContent = "Reset";
+    wrapper.appendChild(reset);
+
+    reset.addEventListener('click', ()=>{
+        nameInput.value = null;
+        descInput.value = null;
+    });
+
+    //cancel button and event listener
+    const cancel = document.createElement('button');
+    cancel.setAttribute('type','button');
+    cancel.textContent = "Cancel";
+    wrapper.appendChild(cancel);
+
+    cancel.addEventListener('click',()=>{
+        wrapper.remove(submit);
+    });
 
     return wrapper;
 };
