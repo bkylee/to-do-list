@@ -73,10 +73,7 @@ class ToDo extends Projects{
         this._name = value;
     };
     set description(value){
-        if (value.length < 3){
-            alert('Description must be at least 3 characters');
-        return};
-        this._description = value;
+        return this._description = value;
     };
     get name(){
         return this._name;

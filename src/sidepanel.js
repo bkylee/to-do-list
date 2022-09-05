@@ -103,14 +103,15 @@ function projectElement(projects){
         const TDSubmit = document.getElementById('TDSubmit');
         TDSubmit.addEventListener('click',()=>{
             element.addToDo(getToDo());
-            element.toDoList.forEach((todo), ()=>{
+            element.toDoList.forEach((todo)=>{
                 const todoname = document.createElement('div');
+                projectName.appendChild(todoname);
                 todoname.textContent = todo.name;
                 todoname.addEventListener('click', ()=>{
                     //main wrapper
                     const todoEditor = document.getElementById('editor');
                     //remove last child in case they're already editing or looking at a current todo
-                    todoEditor.removeChild(todoEditor.lastChild);
+
                     
                     //wrapper for showing the todo details 
                     const wrapper = document.createElement('div');
