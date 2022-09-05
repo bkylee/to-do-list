@@ -1,9 +1,15 @@
-export {TDEditor};
+export {TDEditor, getToDo};
 import {ToDo} from "./script";
 
 function TDEditor (){
-    const wrapper = document.getElementById('editor');
-    
+    //get main wrapper 
+    const main = document.getElementById('editor');
+
+    //create wrapper to hold form. Makes it easier to remove all after completing
+    const wrapper = document.createElement('div');
+    wrapper.setAttribute('id','todoWrapper');
+    main.appendChild(wrapper);
+
     //name of to-do
     const name = document.createElement('label');
     name.textContent = "Name";
@@ -74,12 +80,27 @@ function TDEditor (){
     wrapper.appendChild(cancel);
 
     cancel.addEventListener('click',()=>{
-        wrapper.remove(submit);
+        main.remove(wrapper);
     });
 
     return wrapper;
 
 };
+
+function getToDo(){
+    const name = document.getElementById('TDName');
+    const description = document.getElementById('TDDesc');
+    const dueDate = document.getElementById('dueDate');
+    const priority = document.getElementById('priority');
+
+    const todo = new ToDo(name.value,description.value,dueDate.value,priority.value);
+
+    const todoEditor = document.getElementById('editor');
+    const wrapper = document.getElementById('todoEditor');
+    todoEditor.remove(wrapper);
+
+    return todo; 
+}
 
 
 

@@ -1,7 +1,7 @@
 export {addScreen, projectElement};
 import {projectList,Projects} from './script.js';
 import {TDEditor} from './todoEditor';
-import {ToDo} from "./script";
+
 
 function addScreen () {
     const wrapper = document.createElement('div');
@@ -100,6 +100,11 @@ function projectElement(projects){
         newB.addEventListener('click',()=>{
             const todoEditor = document.getElementById('editor');
             todoEditor.appendChild(TDEditor());
+        });
+
+        const TDSubmit = document.getElementById('TDSubmit');
+        TDSubmit.addEventListener('click',()=>{
+            element.addToDo(getToDo());
         });
 
         wrapper.appendChild(projectName);

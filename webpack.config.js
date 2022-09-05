@@ -5,7 +5,9 @@ module.exports = {
     mode: 'development',
     entry:{
         index: './src/index.js',
-        script: './src/script.js'
+        script: './src/script.js',
+        todoEditor: './src/todoEditor.js',
+        sidePanel: './src/sidepanel.js'
     },
     devtool: 'inline-source-map',
     devServer:{
