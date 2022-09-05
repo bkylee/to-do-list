@@ -123,7 +123,7 @@ function addScreen () {
     wrapper.appendChild(name);
 
     const nameInput = document.createElement('input');
-    nameInput.setAttribute('id','Pname');
+    nameInput.setAttribute('id','PnameI');
     nameInput.setAttribute('type','text');
     name.appendChild(nameInput);
 
@@ -131,7 +131,7 @@ function addScreen () {
     //description of new project
     const description = document.createElement('label');
     description.textContent = "Description";
-    description.setAttribute('id','Pdesc');
+    description.setAttribute('id','PdescI');
     wrapper.appendChild(description);
 
     const descInput = document.createElement('textarea');
@@ -199,6 +199,44 @@ function projectElement(projects){
         const projectName = document.createElement('div');
         projectName.textContent = element.name;
         projectName.setAttribute('class','projectName');
+        
+        //button to add to-do 
+        const newB = document.createElement('button');
+        newB.setAttribute('type','button');
+        newB.textContent = "+";
+
+        newB.addEventListener('click',()=>{
+//todo editor 
+        });
+
         wrapper.appendChild(projectName);
+        
     });
 };
+
+
+function TDEditor (){
+    const wrapper = document.getElementById('editor');
+    
+    const name = document.createElement('label');
+    name.textContent = "Name";
+    name.setAttribute('id','TDname');
+    wrapper.appendChild(name);
+
+    const nameInput = document.createElement('input');
+    nameInput.setAttribute('id','TDnameI');
+    nameInput.setAttribute('type','text');
+    name.appendChild(nameInput);
+
+
+    //description of new project
+    const description = document.createElement('label');
+    description.textContent = "Description";
+    description.setAttribute('id','TDdesc');
+    wrapper.appendChild(description);
+
+    const descInput = document.createElement('textarea');
+    descInput.setAttribute('id','TDdescI');
+    description.appendChild(descInput);
+};
+
