@@ -51,12 +51,13 @@ class Projects {
     };
     addToDo(todo){
         this.toDoList.push(todo);
-        return this.toDoList;
+        // return this.toDoList;
     };
     removeToDo(todo){
-        const index = this.toDoList.findIndex(todo);
-        this.toDoList.splice(index, 1);
-        return this.toDoList;
+        const index = this.toDoList.findIndex((element)=>{
+            element.name = todo.name;
+        });
+        this.toDoList.splice(index,1);
     };
 };
 

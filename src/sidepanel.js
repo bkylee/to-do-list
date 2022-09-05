@@ -134,11 +134,22 @@ function projectElement(projects){
                     priority.textContent = todo.priority;
                     wrapper.appendChild(priority);
                 });
+
+                //button to delete todo
+                const remove = document.createElement('button');
+                remove.setAttribute('id','delete');
+                remove.setAttribute('type','button');
+                remove.textContent = "X";
+                remove.addEventListener('click',()=>{
+                    element.removeToDo(todo);
+                    projectName.removeChild(todoname);
+                    });
+                todoname.appendChild(remove);
                 });
             });
         });
 
-        wrapper.appendChild(projectName);
+    wrapper.appendChild(projectName);
         
     });
 };
