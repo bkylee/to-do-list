@@ -89,6 +89,7 @@ function SPAppend(ElementFunction) {
 //append things to side panel 
 SPAppend(SPTitle());
 SPAppend(addButton());
+SPAppend(sideWrap());
 
 //title for side panel 
 function SPTitle(){
@@ -152,8 +153,33 @@ function addScreen () {
         const newItem = new Projects(nameInput.value, descInput.value);
         list.add(newItem);
         document.body.removeChild(document.body.lastChild);
+        projectElement(list);
     });
 
 
     return wrapper;
+};
+
+function sideWrap (){
+    const sideWrap = document.createElement('div');
+    sideWrap.setAttribute('id','projectWrapper');
+    
+    return sideWrap;
+};
+
+function projectElement(projects){
+    //remove current listed projects
+    const sidePanel = document.getElementById('sidePanel');
+    sidePanel.removeChild(sidePanel.lastChild);
+
+    //re-add sideWrap so it's empty 
+    SPAppend(sideWrap());
+
+    const wrapper = document.getElementById('projectWrapper');
+    projects.forEach(element => {
+        const projectName = document.createElement('div');
+        projectName.textContent = element.name;
+        projectName.setAttribute('class','projectName');
+        wrapper.appendChild(projectName);
+    });
 };
