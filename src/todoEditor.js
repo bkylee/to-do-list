@@ -58,6 +58,7 @@ function TDEditor (){
 //submit button and event listener 
     const submit = document.createElement('button');
     submit.setAttribute('type','button');
+    submit.setAttribute('id','TDSubmit');
     submit.textContent = "TDSubmit";
     wrapper.appendChild(submit);
 
@@ -100,7 +101,4 @@ function getToDo(){
     todoEditor.remove(wrapper);
 
     return todo; 
-}
-
-
-
+};

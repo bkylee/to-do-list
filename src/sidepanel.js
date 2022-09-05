@@ -1,6 +1,6 @@
-export {addScreen, projectElement};
+export {addScreen,sideWrap};
 import {projectList,Projects} from './script.js';
-import {TDEditor} from './todoEditor';
+import {TDEditor, getToDo} from './todoEditor';
 
 
 function addScreen () {
@@ -83,7 +83,7 @@ function projectElement(projects){
     sidePanel.removeChild(sidePanel.lastChild);
 
     //re-add sideWrap so it's empty 
-    SPAppend(sideWrap());
+    sidePanel.appendChild(sideWrap());
 
     const wrapper = document.getElementById('projectWrapper');
     projects.forEach(element => {
@@ -100,11 +100,41 @@ function projectElement(projects){
         newB.addEventListener('click',()=>{
             const todoEditor = document.getElementById('editor');
             todoEditor.appendChild(TDEditor());
-        });
-
         const TDSubmit = document.getElementById('TDSubmit');
         TDSubmit.addEventListener('click',()=>{
             element.addToDo(getToDo());
+            element.toDoList.forEach((todo), ()=>{
+                const todoname = document.createElement('div');
+                todoname.textContent = todo.name;
+                todoname.addEventListener('click', ()=>{
+                    //main wrapper
+                    const todoEditor = document.getElementById('editor');
+                    //remove last child in case they're already editing or looking at a current todo
+                    todoEditor.removeChild(todoEditor.lastChild);
+                    
+                    //wrapper for showing the todo details 
+                    const wrapper = document.createElement('div');
+                    todoEditor.appendChild(wrapper);
+                    wrapper.setAttribute('id','showToDo');
+                    
+                    const name = document.createElement('div');
+                    name.textContent = todo.name;
+                    wrapper.appendChild(name);
+
+                    const description = document.createElement('div');
+                    description.textContent = todo.description;
+                    wrapper.appendChild(description);
+
+                    const dueDate = document.createElement('div');
+                    dueDate.textContent = todo.dueDate;
+                    wrapper.appendChild(dueDate);
+
+                    const priority = document.createElement('div');
+                    priority.textContent = todo.priority;
+                    wrapper.appendChild(priority);
+                });
+                });
+            });
         });
 
         wrapper.appendChild(projectName);

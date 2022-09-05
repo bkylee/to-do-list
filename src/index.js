@@ -2,6 +2,7 @@
 
 import './style.css';
 import cap from './cap.png';
+import {addScreen,sideWrap} from './sidepanel';
 
 const header = (()=>{
     const wrapper = document.createElement('div');
