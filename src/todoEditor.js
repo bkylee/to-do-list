@@ -17,7 +17,7 @@ function TDEditor (){
     wrapper.appendChild(name);
 
     const nameInput = document.createElement('input');
-    nameInput.setAttribute('id','TDname');
+    nameInput.setAttribute('id','TDnameI');
     nameInput.setAttribute('type','text');
     name.appendChild(nameInput);
 
@@ -25,7 +25,7 @@ function TDEditor (){
     //description of new to-do
     const description = document.createElement('label');
     description.textContent = "Description";
-    description.setAttribute('id','TDdesc');
+    description.setAttribute('id','TDdescI');
     wrapper.appendChild(description);
 
     const descInput = document.createElement('textarea');
@@ -39,7 +39,7 @@ function TDEditor (){
     wrapper.appendChild(dueDate);
 
     const dueDateInput = document.createElement('input');
-    dueDateInput.setAttribute('id','dueDate');
+    dueDateInput.setAttribute('id','dueDateI');
     dueDateInput.setAttribute('type','date');
     dueDate.appendChild(dueDateInput);
 
@@ -53,6 +53,7 @@ function TDEditor (){
     priorityI.setAttribute('type','number');
     priorityI.setAttribute('min', '1');
     priorityI.setAttribute('max', '5');
+    priorityI.setAttribute('id','priorityI');
     priority.appendChild(priorityI);
 
 //submit button and event listener 
@@ -81,7 +82,7 @@ function TDEditor (){
     wrapper.appendChild(cancel);
 
     cancel.addEventListener('click',()=>{
-        main.remove(wrapper);
+        main.removeChild(wrapper);
     });
 
     return wrapper;
@@ -89,12 +90,12 @@ function TDEditor (){
 };
 
 function getToDo(){
-    const name = document.getElementById('TDName');
-    const description = document.getElementById('TDDesc');
-    const dueDate = document.getElementById('dueDate');
-    const priority = document.getElementById('priority');
+    const name = document.getElementById('TDnameI').value;
+    const description = document.getElementById('TDdescI').value;
+    const dueDate = document.getElementById('dueDateI').value;
+    const priority = document.getElementById('priorityI').value;
 
-    const todo = new ToDo(name.value,description.value,dueDate.value,priority.value);
+    const todo = new ToDo(name,description,dueDate,priority);
 
     const todoEditor = document.getElementById('editor');
     const wrapper = document.getElementById('todoEditor');
