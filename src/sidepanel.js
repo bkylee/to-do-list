@@ -107,12 +107,13 @@ function projectElement(projects){
                 const todoname = document.createElement('div');
                 projectName.appendChild(todoname);
                 todoname.textContent = todo.name;
-                todoname.addEventListener('click', ()=>{
-                    //main wrapper
-                    const todoEditor = document.getElementById('editor');
-                    //remove last child in case they're already editing or looking at a current todo
 
-                    
+                //todo show on screen button 
+                const showToDo = document.createElement('button');
+                todoname.appendChild(showToDo);
+                showToDo.textContent = "Show";
+                showToDo.setAttribute('type','button');
+                showToDo.addEventListener('click', ()=>{
                     //wrapper for showing the todo details 
                     const wrapper = document.createElement('div');
                     todoEditor.appendChild(wrapper);
@@ -143,6 +144,8 @@ function projectElement(projects){
                 remove.addEventListener('click',()=>{
                     element.removeToDo(todo);
                     projectName.removeChild(todoname);
+                    const wrapper = document.getElementById('showToDo');
+                    todoEditor.removeChild(todoEditor.lastChild);
                     });
                 todoname.appendChild(remove);
                 });

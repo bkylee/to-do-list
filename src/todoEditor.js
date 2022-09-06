@@ -98,8 +98,8 @@ function getToDo(){
     const todo = new ToDo(name,description,dueDate,priority);
 
     const todoEditor = document.getElementById('editor');
-    const wrapper = document.getElementById('todoEditor');
-    todoEditor.remove(wrapper);
+    const wrapper = document.getElementById('todoWrapper');
+    todoEditor.removeChild(wrapper);
 
     return todo; 
 };
