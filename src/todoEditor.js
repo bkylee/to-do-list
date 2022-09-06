@@ -6,52 +6,53 @@ function TDEditor (){
     const main = document.getElementById('editor');
 
     //create wrapper to hold form. Makes it easier to remove all after completing
-    const wrapper = document.createElement('div');
+    const wrapper = document.createElement('form');
     wrapper.setAttribute('id','todoWrapper');
     main.appendChild(wrapper);
 
     //name of to-do
     const name = document.createElement('label');
     name.textContent = "Name";
-    name.setAttribute('id','TDname');
+    name.setAttribute('for','TDnameI');
     wrapper.appendChild(name);
 
     const nameInput = document.createElement('input');
     nameInput.setAttribute('id','TDnameI');
+    nameInput.setAttribute('name','TDnameI');
     nameInput.setAttribute('type','text');
     nameInput.setAttribute('minlength','3');
     nameInput.setAttribute('maxlength','20');
     nameInput.require = true;
-    name.appendChild(nameInput);
+    wrapper.appendChild(nameInput);
 
 
     //description of new to-do
     const description = document.createElement('label');
     description.textContent = "Description";
-    description.setAttribute('id','TDdescI');
+    description.setAttribute('for','TDdescI');
     wrapper.appendChild(description);
 
     const descInput = document.createElement('textarea');
-    descInput.setAttribute('id','TDdesc');
+    descInput.setAttribute('id','TDdescI');
     descInput.setAttribute('maxlength','200');   
-    description.appendChild(descInput);
+    wrapper.appendChild(descInput);
 
     //date due 
     const dueDate = document.createElement('label')
     dueDate.textContent = "Date due";
-    dueDate.setAttribute('id','dueDate');
+    dueDate.setAttribute('for','dueDateI');
     wrapper.appendChild(dueDate);
 
     const dueDateInput = document.createElement('input');
     dueDateInput.setAttribute('id','dueDateI');
     dueDateInput.setAttribute('type','date');
     dueDateInput.required = true;
-    dueDate.appendChild(dueDateInput);
+    wrapper.appendChild(dueDateInput);
 
     //priority
     const priority = document.createElement('label');
     priority.textContent = "Priority ranging from 1 (low) to 5 (high)";
-    priority.setAttribute('id','priority');
+    priority.setAttribute('for','priorityI');
     wrapper.appendChild(priority);
 
     const priorityI = document.createElement('input');
@@ -59,20 +60,21 @@ function TDEditor (){
     priorityI.setAttribute('min', '1');
     priorityI.setAttribute('max', '5');
     priorityI.setAttribute('id','priorityI');
+    priorityI.setAttribute('value','1');
     priorityI.required = true;
-    priority.appendChild(priorityI);
+    wrapper.appendChild(priorityI);
 
 //submit button and event listener 
     const submit = document.createElement('button');
-    submit.setAttribute('type','button');
+    submit.setAttribute('type','submit');
     submit.setAttribute('id','TDSubmit');
     submit.textContent = "TDSubmit";
-    wrapper.appendChild(submit);
+    main.appendChild(submit);
 
     const reset = document.createElement('button');
     reset.setAttribute('type','button');
     reset.textContent = "Reset";
-    wrapper.appendChild(reset);
+    main.appendChild(reset);
 
     reset.addEventListener('click', ()=>{
         nameInput.value = null;
@@ -85,7 +87,7 @@ function TDEditor (){
     const cancel = document.createElement('button');
     cancel.setAttribute('type','button');
     cancel.textContent = "Cancel";
-    wrapper.appendChild(cancel);
+    main.appendChild(cancel);
 
     cancel.addEventListener('click',()=>{
         main.removeChild(wrapper);

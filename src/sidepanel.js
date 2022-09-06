@@ -4,36 +4,39 @@ import {TDEditor, getToDo} from './todoEditor';
 
 
 function addScreen () {
-    const wrapper = document.createElement('div');
+    const wrapper = document.createElement('form');
+    wrapper.setAttribute('onsubmit','return false');
+
     //the form to create the new project
 
     //name of new project
     const name = document.createElement('label');
     name.textContent = "Name";
-    name.setAttribute('id','Pname');
+    name.setAttribute('for','PnameI');
     wrapper.appendChild(name);
 
     const nameInput = document.createElement('input');
     nameInput.setAttribute('id','PnameI');
+    nameInput.setAttribute('name','PnameI');
     nameInput.setAttribute('type','text');
     nameInput.setAttribute('minlength','3');
     nameInput.required = true;
-    name.appendChild(nameInput);
+    wrapper.appendChild(nameInput);
 
 
     //description of new project
     const description = document.createElement('label');
     description.textContent = "Description";
-    description.setAttribute('id','PdescI');
+    description.setAttribute('for','PdescI');
     wrapper.appendChild(description);
 
     const descInput = document.createElement('textarea');
-    descInput.setAttribute('id','Pdesc');
-    description.appendChild(descInput);
+    descInput.setAttribute('id','PdescI');
+    wrapper.appendChild(descInput);
 
     //submit button and event listener 
     const submit = document.createElement('button');
-    submit.setAttribute('type','button');
+    submit.setAttribute('type','submit');
     submit.textContent = "Submit";
     wrapper.appendChild(submit);
 
@@ -41,7 +44,7 @@ function addScreen () {
     const list = projectList();
 
     //submit button 
-    submit.addEventListener('click',()=>{
+    submit.addEventListener('submit',()=>{
         const newItem = new Projects(nameInput.value, descInput.value);
         list.add(newItem);
         projectElement(list.list);
@@ -103,7 +106,7 @@ function projectElement(projects){
             const todoEditor = document.getElementById('editor');
             todoEditor.appendChild(TDEditor());
         const TDSubmit = document.getElementById('TDSubmit');
-        TDSubmit.addEventListener('click',()=>{
+        TDSubmit.addEventListener('submit',()=>{
             element.addToDo(getToDo());
             element.toDoList.forEach((todo)=>{
                 const todoname = document.createElement('div');

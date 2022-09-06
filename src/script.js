@@ -32,10 +32,7 @@ class Projects {
     this.toDoList = [];
 }
     set name(value) {
-        if (value.length < 3){
-            alert("Name must be at least 3 characters");
-        return};
-        this._name = value;
+        return this._name = value;
     };
     set description(value){
         this._description = value;
