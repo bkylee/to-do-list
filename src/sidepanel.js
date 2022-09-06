@@ -146,7 +146,6 @@ function projectElement(projects){
                 remove.addEventListener('click',()=>{
                     element.removeToDo(todo);
                     projectName.removeChild(todoname);
-                    const wrapper = document.getElementById('showToDo');
                     todoEditor.removeChild(todoEditor.lastChild);
                     });
                 todoname.appendChild(remove);

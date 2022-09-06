@@ -38,9 +38,6 @@ class Projects {
         this._name = value;
     };
     set description(value){
-        if (value.length < 3){
-            alert('Description must be at least 3 characters');
-        return};
         this._description = value;
     };
     get name(){
@@ -68,10 +65,7 @@ class ToDo extends Projects{
         this.priority = priority;
     };
     set name(value) {
-        if (value.length < 3){
-            alert("Name must be at least 3 characters");
-        return};
-        this._name = value;
+        return this._name = value;
     };
     set description(value){
         return this._description = value;
