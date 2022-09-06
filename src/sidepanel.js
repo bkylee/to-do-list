@@ -16,6 +16,8 @@ function addScreen () {
     const nameInput = document.createElement('input');
     nameInput.setAttribute('id','PnameI');
     nameInput.setAttribute('type','text');
+    nameInput.setAttribute('minlength','3');
+    nameInput.required = true;
     name.appendChild(nameInput);
 
 

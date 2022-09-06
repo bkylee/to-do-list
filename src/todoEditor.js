@@ -19,6 +19,8 @@ function TDEditor (){
     const nameInput = document.createElement('input');
     nameInput.setAttribute('id','TDnameI');
     nameInput.setAttribute('type','text');
+    nameInput.setAttribute('minlength','3');
+    nameInput.require = true;
     name.appendChild(nameInput);
 
 
@@ -41,6 +43,7 @@ function TDEditor (){
     const dueDateInput = document.createElement('input');
     dueDateInput.setAttribute('id','dueDateI');
     dueDateInput.setAttribute('type','date');
+    dueDateInput.required = true;
     dueDate.appendChild(dueDateInput);
 
     //priority
@@ -54,6 +57,7 @@ function TDEditor (){
     priorityI.setAttribute('min', '1');
     priorityI.setAttribute('max', '5');
     priorityI.setAttribute('id','priorityI');
+    priorityI.required = true;
     priority.appendChild(priorityI);
 
 //submit button and event listener 
