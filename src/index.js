@@ -74,7 +74,6 @@ const sidePanel = (()=>{
 const editor = (()=>{
     const wrapper = document.createElement('div');
     wrapper.setAttribute('id','editor');
-    wrapper.textContent = "test";
     
     const main = document.getElementById('main');
     main.appendChild(wrapper);
