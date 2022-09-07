@@ -8,31 +8,67 @@
     font-size: 22px;
 }
 
+textarea{
+    resize: none;
+}
+
 body{
     margin:0;
 }
 
 #header{
-    border: black solid 2px;
-    height: 5vh;;
+    display: flex;
+    border-bottom: black solid 2px;
+    height: 2rem;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#search>input{
+    background-color: #AC9969;
+    border-bottom: black solid 1px;
+    height: 1rem;
+    padding: 0;
+    border-radius: 3px;
 }
 
 #main{
     display: flex;
-    height: 90vh;
+    height: calc(100vh - 2rem);
 }
 
 #sidePanel {
-    border: black solid 2px;
+    border-right: black solid 2px;
     width: 20vw;
+    background-color: #F4EF88;
+}
+
+#rightside{
+    display: flex;
 }
 
 #sidePanel>form{
     font-size: 0.6rem;
 }   
 
+#editor{
+    font-family: 'Kalam', cursive;
+    width: 80vw;
+    background-color: #9DCDC0;
+}
+
+.projectName>div{
+    padding-left: 1rem;
+    font-size: 0.6rem;
+}
+
+#showToDo>div{
+    font-size: 2rem;
+}
+
 button{
     border: none;
+    background-color: #F4EF88;
 }
 
 input{

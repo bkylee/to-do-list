@@ -72,12 +72,12 @@ function TDEditor (){
     const submit = document.createElement('button');
     submit.setAttribute('type','button');
     submit.setAttribute('id','TDSubmit');
-    submit.textContent = "TDSubmit";
+    submit.textContent = "✅";
     wrapper.appendChild(submit);
 
     const reset = document.createElement('button');
     reset.setAttribute('type','button');
-    reset.textContent = "Reset";
+    reset.textContent = "↩️";
     wrapper.appendChild(reset);
 
     reset.addEventListener('click', ()=>{
@@ -90,7 +90,7 @@ function TDEditor (){
     //cancel button and event listener
     const cancel = document.createElement('button');
     cancel.setAttribute('type','button');
-    cancel.textContent = "Cancel";
+    cancel.textContent = "❎";
     wrapper.appendChild(cancel);
 
     cancel.addEventListener('click',()=>{

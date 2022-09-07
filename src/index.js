@@ -18,8 +18,7 @@ function appendHeader(ElementFunction) {
 };
 
 appendHeader(searchBar());
-appendHeader(profile());
-appendHeader(settings());
+appendHeader(rightside());
 
 //function that returns the search bar; 
 function searchBar() {
@@ -37,19 +36,27 @@ function searchBar() {
 };
 
 //profile icon
-function profile() {
+function rightside() {
+    const wrapper = document.createElement('div');
+    wrapper.setAttribute('id','rightside');
     const pic = new Image();
     pic.src = cap; 
     pic.width = 25;
     pic.height = 25;
 
-    return pic;
+    const settings = document.createElement('div');
+    settings.setAttribute('id','settings');
+    settings.textContent = '⚙️';
+
+    wrapper.appendChild(pic);
+    wrapper.appendChild(settings);
+
+    return wrapper;
 };
 
 //settings gear icon 
 function settings() { 
-    const settings = document.createElement('div');
-    settings.textContent = '⚙️';
+
 
     return settings; 
 };
@@ -103,7 +110,7 @@ function addButton () {
     const but = document.createElement('button');
     but.setAttribute('type','button');
     but.setAttribute('id','addition');
-    but.textContent = "+"
+    but.textContent = "➕"
     but.addEventListener('click',()=>{
         const sidePanel = document.getElementById('sidePanel');
         sidePanel.appendChild(addScreen());

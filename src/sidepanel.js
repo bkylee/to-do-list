@@ -39,7 +39,7 @@ function addScreen () {
     //submit button and event listener 
     const submit = document.createElement('button');
     submit.setAttribute('type','button');
-    submit.textContent = "Submit";
+    submit.textContent = "✅";
     wrapper.appendChild(submit);
 
     // list of projects in array
@@ -60,7 +60,7 @@ function addScreen () {
     //reset button and event listener
     const reset = document.createElement('button');
     reset.setAttribute('type','button');
-    reset.textContent = "Reset";
+    reset.textContent = "↩️";
     wrapper.appendChild(reset);
 
     reset.addEventListener('click', ()=>{
@@ -71,7 +71,7 @@ function addScreen () {
     //cancel button and event listener
     const cancel = document.createElement('button');
     cancel.setAttribute('type','button');
-    cancel.textContent = "Cancel";
+    cancel.textContent = "❎";
     wrapper.appendChild(cancel);
 
     cancel.addEventListener('click',()=>{
@@ -105,12 +105,12 @@ function projectElement(projects){
         //button to add to-do 
         const newB = document.createElement('button');
         newB.setAttribute('type','button');
-        newB.textContent = "+";
+        newB.textContent = "➕";
         projectName.appendChild(newB);
 
         const del = document.createElement('button');
         del.setAttribute('type','button');
-        del.textContent = "x";
+        del.textContent = "➖";
         del.addEventListener('click',()=>{
             const index = projects.findIndex((element)=>{
                 element.name = projectName.textContent
@@ -149,15 +149,15 @@ function projectElement(projects){
                     wrapper.appendChild(name);
 
                     const description = document.createElement('div');
-                    description.textContent = todo.description;
+                    description.textContent = `Description: ${todo.description}`;
                     wrapper.appendChild(description);
 
                     const dueDate = document.createElement('div');
-                    dueDate.textContent = todo.dueDate;
+                    dueDate.textContent = `Due date: ${todo.dueDate}`;
                     wrapper.appendChild(dueDate);
 
                     const priority = document.createElement('div');
-                    priority.textContent = todo.priority;
+                    priority.textContent = `Priority: ${todo.priority}`;
                     wrapper.appendChild(priority);
                 });
 
