@@ -4,9 +4,7 @@ import {TDEditor, getToDo} from './todoEditor';
 
 
 function addScreen () {
-    const main = document.createElement('div');
     const wrapper = document.createElement('form');
-    main.appendChild(wrapper);
 
     //the form to create the new project
 
@@ -21,6 +19,7 @@ function addScreen () {
     nameInput.setAttribute('name','PnameI');
     nameInput.setAttribute('type','text');
     nameInput.setAttribute('minlength','3');
+    nameInput.setAttribute('size','10');
     nameInput.required = true;
     wrapper.appendChild(nameInput);
 
@@ -33,6 +32,8 @@ function addScreen () {
 
     const descInput = document.createElement('textarea');
     descInput.setAttribute('id','PdescI');
+    descInput.setAttribute('cols','8');
+    descInput.setAttribute('rows','1');  
     wrapper.appendChild(descInput);
 
     //submit button and event listener 

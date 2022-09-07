@@ -23,6 +23,7 @@ function TDEditor (){
     nameInput.setAttribute('type','text');
     nameInput.setAttribute('minlength','3');
     nameInput.setAttribute('maxlength','20');
+    nameInput.setAttribute('size','10');
     nameInput.require = true;
     wrapper.appendChild(nameInput);
 
@@ -35,7 +36,9 @@ function TDEditor (){
 
     const descInput = document.createElement('textarea');
     descInput.setAttribute('id','TDdescI');
-    descInput.setAttribute('maxlength','200');   
+    descInput.setAttribute('maxlength','200'); 
+    descInput.setAttribute('cols','8');
+    descInput.setAttribute('rows','1');  
     wrapper.appendChild(descInput);
 
     //date due 

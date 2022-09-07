@@ -3,7 +3,6 @@
 import './style.css';
 import cap from './cap.png';
 import {addScreen,sideWrap} from './sidepanel';
-import {TDEditor, getToDo} from './todoEditor';
 
 const header = (()=>{
     const wrapper = document.createElement('div');
@@ -106,7 +105,8 @@ function addButton () {
     but.setAttribute('id','addition');
     but.textContent = "+"
     but.addEventListener('click',()=>{
-        document.body.appendChild(addScreen());
+        const sidePanel = document.getElementById('sidePanel');
+        sidePanel.appendChild(addScreen());
     });
     return but;
 };

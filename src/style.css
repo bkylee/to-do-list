@@ -5,12 +5,36 @@
     font-family: 'Roboto', sans-serif;
     background-color: #D9F4C7;
     box-sizing: border-box;
-};
+    font-size: 22px;
+}
+
+body{
+    margin:0;
+}
+
+#header{
+    border: black solid 2px;
+    height: 5vh;;
+}
 
 #main{
     display: flex;
-};
+    height: 90vh;
+}
+
+#sidePanel {
+    border: black solid 2px;
+    width: 20vw;
+}
+
+#sidePanel>form{
+    font-size: 0.6rem;
+}   
 
 button{
     border: none;
-};
+}
+
+input{
+    border: none;
+}
