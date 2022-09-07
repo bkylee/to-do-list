@@ -36,6 +36,13 @@ body{
     display: flex;
     height: calc(100vh - 2rem);
 }
+#showToDo{
+    font-size: 2rem;
+}
+.tdname{
+    font-weight: bold;
+    font-size: 4rem;
+}
 
 #sidePanel {
     border-right: black solid 2px;
@@ -60,10 +67,6 @@ body{
 .projectName>div{
     padding-left: 1rem;
     font-size: 0.6rem;
-}
-
-#showToDo>div{
-    font-size: 2rem;
 }
 
 button{

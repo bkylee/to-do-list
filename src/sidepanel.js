@@ -145,6 +145,7 @@ function projectElement(projects){
                     wrapper.setAttribute('id','showToDo');
                     
                     const name = document.createElement('div');
+                    name.setAttribute('class','tdname');
                     name.textContent = todo.name;
                     wrapper.appendChild(name);
 
