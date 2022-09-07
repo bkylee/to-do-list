@@ -1,6 +1,7 @@
 export {TDEditor, getToDo};
 import {ToDo} from "./script";
 
+
 function TDEditor (){
     //get main wrapper 
     const main = document.getElementById('editor');

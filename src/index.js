@@ -3,6 +3,7 @@
 import './style.css';
 import cap from './cap.png';
 import {addScreen,sideWrap} from './sidepanel';
+import {TDEditor, getToDo} from './todoEditor';
 
 const header = (()=>{
     const wrapper = document.createElement('div');

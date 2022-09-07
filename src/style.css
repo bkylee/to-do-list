@@ -1,4 +1,16 @@
-#main{
-    display:flex;
+@import url('https://fonts.googleapis.com/css2?family=Kalam&family=Roboto&display=swap');
+
+:root{
+    /* font-family: 'Kalam', cursive; */
+    font-family: 'Roboto', sans-serif;
+    background-color: #D9F4C7;
+    box-sizing: border-box;
 };
 
+#main{
+    display: flex;
+};
+
+button{
+    border: none;
+};

@@ -4,10 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
     mode: 'development',
     entry:{
-        index: './src/index.js',
-        script: './src/script.js',
-        todoEditor: './src/todoEditor.js',
-        sidePanel: './src/sidepanel.js'
+        index: './src/index.js'
     },
     devtool: 'inline-source-map',
     devServer:{
@@ -20,6 +17,9 @@ module.exports = {
     },
     optimization: {
         runtimeChunk: 'single',
+        splitChunks: {
+            chunks:'all',
+        },
     },
     plugins: [
         new HtmlWebpackPlugin({
