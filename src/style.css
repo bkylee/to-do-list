@@ -36,9 +36,16 @@ body{
     display: flex;
     height: calc(100vh - 2rem);
 }
+
+#PTitle{
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
 #showToDo{
     font-size: 2rem;
 }
+
 .tdname{
     font-weight: bold;
     font-size: 4rem;
@@ -48,6 +55,10 @@ body{
     border-right: black solid 2px;
     width: 20vw;
     background-color: #F4EF88;
+}
+
+#projNew{
+    border-bottom: black solid 2px;
 }
 
 #rightside{

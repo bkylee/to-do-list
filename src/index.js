@@ -107,6 +107,11 @@ function SPTitle(){
 };
 
 function addButton () {
+    const wrapper = document.createElement('div');
+    wrapper.setAttribute('id','projNew');
+
+    const label = document.createElement('label');
+    label.textContent = "New Project";
     const but = document.createElement('button');
     but.setAttribute('type','button');
     but.setAttribute('id','addition');
@@ -115,5 +120,8 @@ function addButton () {
         const sidePanel = document.getElementById('sidePanel');
         sidePanel.appendChild(addScreen());
     });
-    return but;
+
+    wrapper.appendChild(label);
+    wrapper.append(but);
+    return wrapper;
 };
