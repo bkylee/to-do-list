@@ -4,8 +4,9 @@ import {TDEditor, getToDo} from './todoEditor';
 
 
 function addScreen () {
+    const main = document.createElement('div');
     const wrapper = document.createElement('form');
-    wrapper.setAttribute('onsubmit','return false');
+    main.appendChild(wrapper);
 
     //the form to create the new project
 
@@ -36,7 +37,7 @@ function addScreen () {
 
     //submit button and event listener 
     const submit = document.createElement('button');
-    submit.setAttribute('type','submit');
+    submit.setAttribute('type','button');
     submit.textContent = "Submit";
     wrapper.appendChild(submit);
 
@@ -44,7 +45,11 @@ function addScreen () {
     const list = projectList();
 
     //submit button 
-    submit.addEventListener('submit',()=>{
+    submit.addEventListener('click',()=>{
+        if (nameInput.value == null){
+            alert("Please enter a name");
+            return;
+        };
         const newItem = new Projects(nameInput.value, descInput.value);
         list.add(newItem);
         projectElement(list.list);
@@ -102,11 +107,25 @@ function projectElement(projects){
         newB.textContent = "+";
         projectName.appendChild(newB);
 
+        const del = document.createElement('button');
+        del.setAttribute('type','button');
+        del.textContent = "x";
+        del.addEventListener('click',()=>{
+            const index = projects.findIndex((element)=>{
+                element.name = projectName.textContent
+            });
+            projects.splice(index,1);
+            wrapper.removeChild(projectName);
+        });
+        projectName.appendChild(del);
+
+        //new button event listener (create todos);
         newB.addEventListener('click',()=>{
             const todoEditor = document.getElementById('editor');
             todoEditor.appendChild(TDEditor());
+
         const TDSubmit = document.getElementById('TDSubmit');
-        TDSubmit.addEventListener('submit',()=>{
+        TDSubmit.addEventListener('click',()=>{
             element.addToDo(getToDo());
             element.toDoList.forEach((todo)=>{
                 const todoname = document.createElement('div');
