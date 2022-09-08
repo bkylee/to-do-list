@@ -1,6 +1,6 @@
 export {addScreen,sideWrap};
 import {projectList,Projects} from './script.js';
-import {TDEditor, getToDo} from './todoEditor';
+import {TDEditor} from './todoEditor';
 
 
 function addScreen () {
@@ -55,6 +55,8 @@ function addScreen () {
         list.add(newItem);
         projectElement(list.list);
         wrapper.remove(submit);
+
+        createProjectList(list);
     });
 
     //reset button and event listener
@@ -73,7 +75,6 @@ function addScreen () {
     cancel.setAttribute('type','button');
     cancel.textContent = "❎";
     wrapper.appendChild(cancel);
-
     cancel.addEventListener('click',()=>{
         wrapper.remove(submit);
     });
@@ -81,32 +82,50 @@ function addScreen () {
     return wrapper;
 };
 
-function sideWrap (){
-    const sideWrap = document.createElement('div');
-    sideWrap.setAttribute('id','projectWrapper');
-    
-    return sideWrap;
+function createProjectList(projects){
+    const sidePanel = document.getElementById('sidePanel');
+    projects.forEach((project)=>{
+        const pName = document.createElement('div');
+        pName.textContent = project.name;
+        pName.setAttribute('class','projectName');
+        sidePanel.appendChild(pName);
+
+        //button to create a todo for the project
+        const newB = document.createElement('button');
+        pName.appendChild(newB);
+        newB.setAttribute('id','makeToDo');
+        newB.setAttribute('type','button');
+        newB.textContent = "➕";
+        newB.addEventListener('click',()=>{
+            const todoEditor = document.getElementById('editor');
+            todoEditor.appendChild(TDEditor(project, pName));
+        });
+        const del = document.createElement('button');
+        pName.appendChild(del);
+        del.setAttribute('type','button');
+        del.textContent = "➖";
+        del.addEventListener('click',()=>{
+            projects.remove(project);
+            createProjectList(projects);
+        });
+    });
 };
 
 function projectElement(projects){
     //remove current listed projects
     const sidePanel = document.getElementById('sidePanel');
-    sidePanel.removeChild(sidePanel.lastChild);
-
-    //re-add sideWrap so it's empty 
     sidePanel.appendChild(sideWrap());
 
     const wrapper = document.getElementById('projectWrapper');
     projects.forEach(element => {
         const projectName = document.createElement('div');
         projectName.textContent = element.name;
-        projectName.setAttribute('class','projectName');
-        
-        //button to add to-do 
-        const newB = document.createElement('button');
-        newB.setAttribute('type','button');
-        newB.textContent = "➕";
-        projectName.appendChild(newB);
+
+        newB.addEventListener('click',()=>{
+        const todoEditor = document.getElementById('editor');
+        todoEditor.appendChild(TDEditor());
+            newToDoButton(todoEditor, element,projectName);
+    });
 
         const del = document.createElement('button');
         del.setAttribute('type','button');
@@ -118,66 +137,8 @@ function projectElement(projects){
             projects.splice(index,1);
             wrapper.removeChild(projectName);
         });
-        projectName.appendChild(del);
-
-        //new button event listener (create todos);
-        newB.addEventListener('click',()=>{
-            const todoEditor = document.getElementById('editor');
-            todoEditor.appendChild(TDEditor());
-
-        const TDSubmit = document.getElementById('TDSubmit');
-        TDSubmit.addEventListener('click',()=>{
-            element.addToDo(getToDo());
-            element.toDoList.forEach((todo)=>{
-                const todoname = document.createElement('div');
-                projectName.appendChild(todoname);
-                todoname.textContent = todo.name;
-
-                //todo show on screen button 
-                const showToDo = document.createElement('button');
-                todoname.appendChild(showToDo);
-                showToDo.textContent = "Show";
-                showToDo.setAttribute('type','button');
-                showToDo.addEventListener('click', ()=>{
-                    //wrapper for showing the todo details 
-                    const wrapper = document.createElement('div');
-                    todoEditor.appendChild(wrapper);
-                    wrapper.setAttribute('id','showToDo');
-                    
-                    const name = document.createElement('div');
-                    name.setAttribute('class','tdname');
-                    name.textContent = todo.name;
-                    wrapper.appendChild(name);
-
-                    const description = document.createElement('div');
-                    description.textContent = `Description: ${todo.description}`;
-                    wrapper.appendChild(description);
-
-                    const dueDate = document.createElement('div');
-                    dueDate.textContent = `Due date: ${todo.dueDate}`;
-                    wrapper.appendChild(dueDate);
-
-                    const priority = document.createElement('div');
-                    priority.textContent = `Priority: ${todo.priority}`;
-                    wrapper.appendChild(priority);
-                });
-
-                //button to delete todo
-                const remove = document.createElement('button');
-                remove.setAttribute('id','delete');
-                remove.setAttribute('type','button');
-                remove.textContent = "X";
-                remove.addEventListener('click',()=>{
-                    element.removeToDo(todo);
-                    projectName.removeChild(todoname);
-                    todoEditor.removeChild(todoEditor.lastChild);
-                    });
-                todoname.appendChild(remove);
-                });
-            });
-        });
+    projectName.appendChild(del);
 
     wrapper.appendChild(projectName);
-        
     });
 };

@@ -2,7 +2,7 @@
 
 import './style.css';
 import cap from './cap.png';
-import {addScreen,sideWrap} from './sidepanel';
+import {addScreen} from './sidepanel';
 
 const header = (()=>{
     const wrapper = document.createElement('div');
@@ -104,6 +104,13 @@ function SPTitle(){
     projects.textContent = "Projects";
     
     return projects;
+};
+
+function sideWrap (){
+    const sideWrap = document.createElement('div');
+    sideWrap.setAttribute('id','projectWrapper');
+    
+    return sideWrap;
 };
 
 function addButton () {

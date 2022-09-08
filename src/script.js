@@ -4,7 +4,6 @@ export {
     ToDo
 };
 
-
 const projectList = ()=>{
     //the array of projects
     const list = [];
