@@ -1,10 +1,9 @@
 import { ToDo } from './script';
-import { createProjectList, projs } from './sidepanel';
 import './style.css';
 
 export { TDEditor, getToDo, todoUnderProject };
 
-function TDEditor(project) {
+function TDEditor() {
   // get main wrapper
   const main = document.getElementById('editor');
 
@@ -74,11 +73,6 @@ function TDEditor(project) {
   submit.setAttribute('type', 'button');
   submit.setAttribute('id', 'TDSubmit');
   submit.textContent = '✅';
-  submit.addEventListener('click', () => {
-    const todo = getToDo();
-    project.addToDo(todo);
-    createProjectList(projs);
-  });
   wrapper.appendChild(submit);
 
   const reset = document.createElement('button');
@@ -188,8 +182,8 @@ function showToDo(todo, project, pName) {
   remove.textContent = 'Delete';
   remove.addEventListener('click', () => {
     project.removeToDo(todo);
-    const wrapper = document.getElementById('editor');
-    wrapper.removeChild(wrapper.lastChild);
+    const editor = document.getElementById('editor');
+    editor.removeChild(editor.lastChild);
     todoUnderProject(project, pName);
   });
   wrapper.appendChild(remove);

@@ -1,5 +1,5 @@
 import { projectList, Projects } from './script.js';
-import { TDEditor, todoUnderProject } from './todoEditor.js';
+import { TDEditor, todoUnderProject, getToDo } from './todoEditor.js';
 import './style.css';
 
 export { addScreen, createProjectList };
@@ -85,7 +85,7 @@ function createProjectList(projs) {
   //     sidePanel.removeChild(sidePanel.lastChild);
   // };
   if (sidePanel.childElementCount > 3) {
-    for (let i = sidePanel.childElementCount; i > 3; i--) {
+    for (let i = sidePanel.childElementCount; i > 3; i -= 1) {
       sidePanel.removeChild(sidePanel.lastChild);
     }
   }
@@ -104,7 +104,8 @@ function createProjectList(projs) {
     newB.textContent = '➕';
     newB.addEventListener('click', () => {
       const todoEditor = document.getElementById('editor');
-      todoEditor.appendChild(TDEditor(project, projs));
+      todoEditor.appendChild(TDEditor());
+      TDSubmit(project);
     });
 
     const del = document.createElement('button');
@@ -113,12 +114,22 @@ function createProjectList(projs) {
     del.textContent = '➖';
     del.addEventListener('click', () => {
       const index = list.findIndex((element) => {
-        element.name === pName.textContent;
+        if (element.name === pName.textContent);
+        return element;
       });
       list.splice(index, 1);
       sidePanel.removeChild(pName);
       createProjectList(projs);
     });
     todoUnderProject(project, pName);
+  });
+}
+
+function TDSubmit(project) {
+  const submit = document.getElementById('TDSubmit');
+  submit.addEventListener('click', () => {
+    const todo = getToDo();
+    project.addToDo(todo);
+    createProjectList(projs);
   });
 }
