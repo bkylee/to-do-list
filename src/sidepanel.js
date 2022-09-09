@@ -1,5 +1,5 @@
 import { projectList, Projects } from './script.js';
-import { TDEditor, todoUnderProject } from './todoEditor';
+import { TDEditor, todoUnderProject } from './todoEditor.js';
 import './style.css';
 
 export { addScreen, createProjectList };

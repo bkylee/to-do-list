@@ -5,8 +5,8 @@ module.exports = {
   mode: 'development',
   entry: {
     index: './src/index.js',
-    sidepanel: 'sidepanel.js',
-    todoEditor: 'todoEditor.js',
+    sidepanel: './src/sidepanel.js',
+    todoEditor: './src/todoEditor.js',
   },
   devtool: 'inline-source-map',
   devServer: {
