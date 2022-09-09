@@ -53,11 +53,6 @@ function rightside() {
   return wrapper;
 }
 
-// settings gear icon
-function settings() {
-  return settings;
-}
-
 // stuff below header wrapper
 const main = (() => {
   const wrapper = document.createElement('div');
@@ -104,8 +99,8 @@ function SPTitle() {
 }
 
 function sideWrap() {
-  const sideWrap = document.createElement('div');
-  sideWrap.setAttribute('id', 'projectWrapper');
+  const projectWrapper = document.createElement('div');
+  projectWrapper.setAttribute('id', 'projectWrapper');
 
   return sideWrap;
 }
