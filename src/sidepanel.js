@@ -1,51 +1,53 @@
+import { projectList, Projects } from './script.js';
+import { TDEditor, todoUnderProject } from './todoEditor';
+import './style.css';
+
 export { addScreen, createProjectList };
 export const projs = projectList();
-import { projectList, Projects } from "./script.js";
-import { TDEditor, todoUnderProject } from "./todoEditor";
 // list of projects in array
 
 function addScreen() {
-  const wrapper = document.createElement("form");
-  //the form to create the new project
+  const wrapper = document.createElement('form');
+  // the form to create the new project
 
-  //name of new project
-  const name = document.createElement("label");
-  name.textContent = "Name";
-  name.setAttribute("for", "PnameI");
+  // name of new project
+  const name = document.createElement('label');
+  name.textContent = 'Name';
+  name.setAttribute('for', 'PnameI');
   wrapper.appendChild(name);
 
-  const nameInput = document.createElement("input");
-  nameInput.setAttribute("id", "PnameI");
-  nameInput.setAttribute("name", "PnameI");
-  nameInput.setAttribute("type", "text");
-  nameInput.setAttribute("minlength", "3");
-  nameInput.setAttribute("size", "10");
+  const nameInput = document.createElement('input');
+  nameInput.setAttribute('id', 'PnameI');
+  nameInput.setAttribute('name', 'PnameI');
+  nameInput.setAttribute('type', 'text');
+  nameInput.setAttribute('minlength', '3');
+  nameInput.setAttribute('size', '10');
   nameInput.required = true;
   wrapper.appendChild(nameInput);
 
-  //description of new project
-  const description = document.createElement("label");
-  description.textContent = "Description";
-  description.setAttribute("for", "PdescI");
+  // description of new project
+  const description = document.createElement('label');
+  description.textContent = 'Description';
+  description.setAttribute('for', 'PdescI');
   wrapper.appendChild(description);
 
-  const descInput = document.createElement("textarea");
-  descInput.setAttribute("id", "PdescI");
-  descInput.setAttribute("cols", "8");
-  descInput.setAttribute("rows", "1");
+  const descInput = document.createElement('textarea');
+  descInput.setAttribute('id', 'PdescI');
+  descInput.setAttribute('cols', '8');
+  descInput.setAttribute('rows', '1');
   wrapper.appendChild(descInput);
 
-  //submit button and event listener
-  const submit = document.createElement("button");
-  submit.setAttribute("type", "button");
-  submit.setAttribute("id", "projectSubmit");
-  submit.textContent = "✅";
+  // submit button and event listener
+  const submit = document.createElement('button');
+  submit.setAttribute('type', 'button');
+  submit.setAttribute('id', 'projectSubmit');
+  submit.textContent = '✅';
   wrapper.appendChild(submit);
 
-  //submit button
-  submit.addEventListener("click", () => {
+  // submit button
+  submit.addEventListener('click', () => {
     if (nameInput.value == null) {
-      alert("Please enter a name");
+      alert('Please enter a name');
       return;
     }
     const newItem = new Projects(nameInput.value, descInput.value);
@@ -54,23 +56,23 @@ function addScreen() {
     wrapper.remove(submit);
   });
 
-  //reset button and event listener
-  const reset = document.createElement("button");
-  reset.setAttribute("type", "button");
-  reset.textContent = "↩️";
+  // reset button and event listener
+  const reset = document.createElement('button');
+  reset.setAttribute('type', 'button');
+  reset.textContent = '↩️';
   wrapper.appendChild(reset);
 
-  reset.addEventListener("click", () => {
+  reset.addEventListener('click', () => {
     nameInput.value = null;
     descInput.value = null;
   });
 
-  //cancel button and event listener
-  const cancel = document.createElement("button");
-  cancel.setAttribute("type", "button");
-  cancel.textContent = "❎";
+  // cancel button and event listener
+  const cancel = document.createElement('button');
+  cancel.setAttribute('type', 'button');
+  cancel.textContent = '❎';
   wrapper.appendChild(cancel);
-  cancel.addEventListener("click", () => {
+  cancel.addEventListener('click', () => {
     wrapper.remove(submit);
   });
 
@@ -78,7 +80,7 @@ function addScreen() {
 }
 
 function createProjectList(projs) {
-  const sidePanel = document.getElementById("sidePanel");
+  const sidePanel = document.getElementById('sidePanel');
   // while (sidePanel.childElementCount > 3){
   //     sidePanel.removeChild(sidePanel.lastChild);
   // };
@@ -89,27 +91,27 @@ function createProjectList(projs) {
   }
   const list = projs.projects;
   list.forEach((project) => {
-    const pName = document.createElement("div");
+    const pName = document.createElement('div');
     pName.textContent = project.name;
-    pName.setAttribute("class", "projectName");
+    pName.setAttribute('class', 'projectName');
     sidePanel.appendChild(pName);
 
-    //button to create a todo for the project
-    const newB = document.createElement("button");
+    // button to create a todo for the project
+    const newB = document.createElement('button');
     pName.appendChild(newB);
-    newB.setAttribute("id", "makeToDo");
-    newB.setAttribute("type", "button");
-    newB.textContent = "➕";
-    newB.addEventListener("click", () => {
-      const todoEditor = document.getElementById("editor");
+    newB.setAttribute('id', 'makeToDo');
+    newB.setAttribute('type', 'button');
+    newB.textContent = '➕';
+    newB.addEventListener('click', () => {
+      const todoEditor = document.getElementById('editor');
       todoEditor.appendChild(TDEditor(project, projs));
     });
 
-    const del = document.createElement("button");
+    const del = document.createElement('button');
     pName.appendChild(del);
-    del.setAttribute("type", "button");
-    del.textContent = "➖";
-    del.addEventListener("click", () => {
+    del.setAttribute('type', 'button');
+    del.textContent = '➖';
+    del.addEventListener('click', () => {
       const index = list.findIndex((element) => {
         element.name === pName.textContent;
       });
