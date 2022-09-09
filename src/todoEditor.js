@@ -1,8 +1,8 @@
-export {TDEditor, getToDo};
+export {TDEditor, getToDo,todoUnderProject};
 import {ToDo} from "./script";
+import {createProjectList, projs} from "./sidepanel";
 
-
-function TDEditor (project,pName){
+function TDEditor (project){
     //get main wrapper 
     const main = document.getElementById('editor');
 
@@ -76,8 +76,7 @@ function TDEditor (project,pName){
     submit.addEventListener('click',()=>{
         const todo = getToDo();
         project.addToDo(todo);
-        todoUnderProject(project, pName);
-        showToDo(todo);
+        createProjectList(projs);
     });
     wrapper.appendChild(submit);
 
@@ -122,20 +121,38 @@ function getToDo(){
     return todo; 
 };
 
-function todoUnderProject(project,projectName){
+function todoUnderProject(project,pName){
+    while (pName.children.length >2){
+        pName.removeChild(pName.lastChild);
+    };
     project.toDoList.forEach((todo)=>{
         const todoname = document.createElement('div');
-        projectName.appendChild(todoname);
+        todoname.setAttribute('class','todoSide');
+        pName.appendChild(todoname);
         todoname.textContent = todo.name;
-        const showToDo = document.createElement('button');
-        todoname.appendChild(showToDo);
-        showToDo.textContent = "Show";
-        showToDo.setAttribute('type','button');
-        showToDo.setAttribute('id','showToDo');
+        const show = document.createElement('button');
+        todoname.appendChild(show);
+        show.textContent = "Show";
+        show.setAttribute('type','button');
+        show.setAttribute('id','showToDo');
+        show.addEventListener('click',()=>{
+            const editor = document.getElementById('editor');
+            editor.appendChild(showToDo(todo,project,pName));
+        });
+        
+        const del = document.createElement('button');
+        todoname.appendChild(del);
+        del.textContent = "Delete";
+        del.setAttribute('type','button');
+        del.setAttribute('id','todoDelSide');
+        del.addEventListener('click',()=>{
+            project.removeToDo(todo);
+            todoUnderProject(project,pName);
+        });
     });
 };
 
-function showToDo(todo){
+function showToDo(todo,project,pName){
         //wrapper for showing the todo details 
         const wrapper = document.createElement('div');
         wrapper.setAttribute('id','showToDo');
@@ -162,6 +179,9 @@ function showToDo(todo){
         edit.setAttribute('id','edit');
         edit.setAttribute('type','button');
         edit.textContent = "Edit";
+        edit.addEventListener('click', ()=>{
+
+        })
 
         //button to delete todo
         const remove = document.createElement('button');
@@ -169,9 +189,10 @@ function showToDo(todo){
         remove.setAttribute('type','button');
         remove.textContent = "Delete";
         remove.addEventListener('click',()=>{
-            projectName.removeChild(todoname);
-            element.removeToDo(todo);
-            todoEditor.removeChild(todoEditor.lastChild);
+            project.removeToDo(todo);
+            const wrapper = document.getElementById('editor');
+            wrapper.removeChild(wrapper.lastChild);
+            todoUnderProject(project,pName);
             });
         wrapper.appendChild(remove);
 

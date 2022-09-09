@@ -6,18 +6,17 @@ export {
 
 const projectList = ()=>{
     //the array of projects
-    const list = [];
+    const projects = [];
     //function to add project to array;
     const add = (project) =>{
-        list.push(project);  
+        projects.push(project);  
     };
-
     const remove = (project) =>{
-        index = list.findIndex(project);
-        list.splice(index,1);
+        const index = projects.findIndex(project);
+        projects.splice(index,1);
     };
     return{
-        list,
+        projects,
         add, 
         remove
     };

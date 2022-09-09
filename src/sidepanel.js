@@ -1,11 +1,11 @@
-export {addScreen,sideWrap};
+export {addScreen, createProjectList};
+export const projs = projectList();
 import {projectList,Projects} from './script.js';
-import {TDEditor} from './todoEditor';
-
+import {TDEditor,todoUnderProject} from './todoEditor';
+       // list of projects in array
 
 function addScreen () {
     const wrapper = document.createElement('form');
-
     //the form to create the new project
 
     //name of new project
@@ -39,11 +39,9 @@ function addScreen () {
     //submit button and event listener 
     const submit = document.createElement('button');
     submit.setAttribute('type','button');
+    submit.setAttribute('id','projectSubmit');
     submit.textContent = "✅";
     wrapper.appendChild(submit);
-
-    // list of projects in array
-    const list = projectList();
 
     //submit button 
     submit.addEventListener('click',()=>{
@@ -52,11 +50,9 @@ function addScreen () {
             return;
         };
         const newItem = new Projects(nameInput.value, descInput.value);
-        list.add(newItem);
-        projectElement(list.list);
+        projs.add(newItem);
+        createProjectList(projs);
         wrapper.remove(submit);
-
-        createProjectList(list);
     });
 
     //reset button and event listener
@@ -82,9 +78,18 @@ function addScreen () {
     return wrapper;
 };
 
-function createProjectList(projects){
+function createProjectList(projs){
     const sidePanel = document.getElementById('sidePanel');
-    projects.forEach((project)=>{
+    // while (sidePanel.childElementCount > 3){
+    //     sidePanel.removeChild(sidePanel.lastChild);
+    // };
+    if (sidePanel.childElementCount>3){
+        for (let i = sidePanel.childElementCount; i > 3; i --){
+            sidePanel.removeChild(sidePanel.lastChild);
+        };
+    };
+    const list = projs.projects;
+    list.forEach((project)=>{
         const pName = document.createElement('div');
         pName.textContent = project.name;
         pName.setAttribute('class','projectName');
@@ -98,47 +103,21 @@ function createProjectList(projects){
         newB.textContent = "➕";
         newB.addEventListener('click',()=>{
             const todoEditor = document.getElementById('editor');
-            todoEditor.appendChild(TDEditor(project, pName));
+            todoEditor.appendChild(TDEditor(project, projs));
         });
+
         const del = document.createElement('button');
         pName.appendChild(del);
         del.setAttribute('type','button');
         del.textContent = "➖";
         del.addEventListener('click',()=>{
-            projects.remove(project);
-            createProjectList(projects);
-        });
-    });
-};
-
-function projectElement(projects){
-    //remove current listed projects
-    const sidePanel = document.getElementById('sidePanel');
-    sidePanel.appendChild(sideWrap());
-
-    const wrapper = document.getElementById('projectWrapper');
-    projects.forEach(element => {
-        const projectName = document.createElement('div');
-        projectName.textContent = element.name;
-
-        newB.addEventListener('click',()=>{
-        const todoEditor = document.getElementById('editor');
-        todoEditor.appendChild(TDEditor());
-            newToDoButton(todoEditor, element,projectName);
-    });
-
-        const del = document.createElement('button');
-        del.setAttribute('type','button');
-        del.textContent = "➖";
-        del.addEventListener('click',()=>{
-            const index = projects.findIndex((element)=>{
-                element.name = projectName.textContent
+            const index = list.findIndex((element)=>{
+                element.name === pName.textContent;
             });
-            projects.splice(index,1);
-            wrapper.removeChild(projectName);
+            list.splice(index,1);
+            sidePanel.removeChild(pName);
+        createProjectList(projs);
         });
-    projectName.appendChild(del);
-
-    wrapper.appendChild(projectName);
+        todoUnderProject(project,pName);
     });
 };
