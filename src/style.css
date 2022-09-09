@@ -1,90 +1,90 @@
-@import url('https://fonts.googleapis.com/css2?family=Kalam&family=Roboto&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Kalam&family=Roboto&display=swap");
 
-:root{
-    /* font-family: 'Kalam', cursive; */
-    font-family: 'Roboto', sans-serif;
-    background-color: #D9F4C7;
-    box-sizing: border-box;
-    font-size: 22px;
+:root {
+  /* font-family: 'Kalam', cursive; */
+  font-family: "Roboto", sans-serif;
+  background-color: #d9f4c7;
+  box-sizing: border-box;
+  font-size: 22px;
 }
 
-textarea{
-    resize: none;
+textarea {
+  resize: none;
 }
 
-body{
-    margin:0;
+body {
+  margin: 0;
 }
 
-#header{
-    display: flex;
-    border-bottom: black solid 2px;
-    height: 2rem;
-    justify-content: space-between;
-    align-items: center;
+#header {
+  display: flex;
+  border-bottom: black solid 2px;
+  height: 2rem;
+  justify-content: space-between;
+  align-items: center;
 }
 
-#search>input{
-    background-color: #AC9969;
-    border-bottom: black solid 1px;
-    height: 1rem;
-    padding: 0;
-    border-radius: 3px;
+#search > input {
+  background-color: #ac9969;
+  border-bottom: black solid 1px;
+  height: 1rem;
+  padding: 0;
+  border-radius: 3px;
 }
 
-#main{
-    display: flex;
-    height: calc(100vh - 2rem);
+#main {
+  display: flex;
+  height: calc(100vh - 2rem);
 }
 
-#PTitle{
-    margin-top: 20px;
-    margin-bottom: 10px;
+#PTitle {
+  margin-top: 20px;
+  margin-bottom: 10px;
 }
 
-.todoSide{
-    font-size: 2rem;
+.todoSide {
+  font-size: 2rem;
 }
 
-.tdname{
-    font-weight: bold;
-    font-size: 4rem;
+.tdname {
+  font-weight: bold;
+  font-size: 4rem;
 }
 
 #sidePanel {
-    border-right: black solid 2px;
-    width: 20vw;
-    background-color: #F4EF88;
+  border-right: black solid 2px;
+  width: 20vw;
+  background-color: #f4ef88;
 }
 
-#projNew{
-    border-bottom: black solid 2px;
+#projNew {
+  border-bottom: black solid 2px;
 }
 
-#rightside{
-    display: flex;
+#rightside {
+  display: flex;
 }
 
-#sidePanel>form{
-    font-size: 0.6rem;
-}   
-
-#editor{
-    font-family: 'Kalam', cursive;
-    width: 80vw;
-    background-color: #9DCDC0;
+#sidePanel > form {
+  font-size: 0.6rem;
 }
 
-.projectName>div{
-    padding-left: 1rem;
-    font-size: 0.6rem;
+#editor {
+  font-family: "Kalam", cursive;
+  width: 80vw;
+  background-color: #9dcdc0;
 }
 
-button{
-    border: none;
-    background-color: #F4EF88;
+.projectName > div {
+  padding-left: 1rem;
+  font-size: 0.6rem;
 }
 
-input{
-    border: none;
+button {
+  border: none;
+  background-color: #f4ef88;
+}
+
+input {
+  border: none;
 }
